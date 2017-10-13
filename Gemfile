@@ -21,6 +21,7 @@ end
 
 group :test do
   gem "factory_girl"
+  gem "faker"
   gem "rspec"
   gem "rack-test"
 end
