@@ -1,5 +1,4 @@
 require "date"
-require "nokogiri"
 require "open-uri"
 
 module Naantala
@@ -8,7 +7,7 @@ module Naantala
       attr_reader :url
 
       def initialize(params = {})
-        @url = params.fetch(:url, "http://example.com")
+        @url = params.fetch(:url, "")
       end
 
       def statuses

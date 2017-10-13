@@ -15,6 +15,6 @@ RSpec.describe Naantala::Controllers::Index do
     end
   end
 
-  descript "POST /phone/new" do
+  describe "POST /phone/new" do
   end
 end
