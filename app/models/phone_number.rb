@@ -6,7 +6,7 @@ module Naantala
 
       key :number, String
 
-      validates_format_of :number, with: /\A\+63\d{10}\z/
+      validates_format_of :number, with: /\A\+63[0-9]{10}\z/
       validates_presence_of :number
       validates_uniqueness_of :number
     end
