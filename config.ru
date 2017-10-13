@@ -1,2 +1,2 @@
-require './app/naantala.rb'
-run Naantala
+require './app'
+run Naantala::App
