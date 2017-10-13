@@ -45,6 +45,3 @@ module Naantala
     end
   end
 end
-
-parser = Naantala::Service::StatusParser.new(url: "https://dotcmrt3.gov.ph/service-status")
-puts parser.statuses

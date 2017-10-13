@@ -1,5 +1,5 @@
-# frozen_string_literal: true
 source "https://rubygems.org"
+ruby File.read(File.join File.dirname(__FILE__), '.ruby-version').strip
 
 gem "mongo_mapper"
 gem "bson_ext"
@@ -10,3 +10,4 @@ gem "rack-attack"
 
 # For the service
 gem "nokogiri"
+gem "twilio-ruby"

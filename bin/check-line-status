@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+path = File.expand_path(File.join(File.dirname(__FILE__), "../app", "service"))
+$LOAD_PATH << path
+
+require "naantala_service"
+
+service = Naantala::Service::LineStatus.new
+service.check_status
