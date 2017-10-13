@@ -1,7 +1,7 @@
 example_id                                        | status | run_time        |
 ------------------------------------------------- | ------ | --------------- |
-./spec/app/controllers/index_spec.rb[1:1:1]       | passed | 0.03876 seconds |
+./spec/app/controllers/index_spec.rb[1:1:1]       | passed | 0.03892 seconds |
 ./spec/app/service/line_status_spec.rb[1:1:1]     | passed | 0.57289 seconds |
-./spec/app/service/status_parser_spec.rb[1:1:1:1] | passed | 0.25846 seconds |
-./spec/app/service/status_parser_spec.rb[1:1:1:2] | passed | 0.28046 seconds |
-./spec/app/service/status_parser_spec.rb[1:1:2:1] | passed | 0.3281 seconds  |
+./spec/app/service/status_parser_spec.rb[1:1:1:1] | passed | 1.16 seconds    |
+./spec/app/service/status_parser_spec.rb[1:1:1:2] | passed | 0.16403 seconds |
+./spec/app/service/status_parser_spec.rb[1:1:2:1] | passed | 0.32887 seconds |
