@@ -1,5 +1,7 @@
 # naantala
 
+[![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala)
+
 Work in progress.
 
 Delivers SMS notifications whenever MRT Line 3 experiences technical problems.
