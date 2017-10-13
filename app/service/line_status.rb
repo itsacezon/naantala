@@ -15,6 +15,7 @@ module Naantala
             bound: latest[:bound]
           )
 
+          # TODO: Logging
           return unless status.valid?
 
           status.save!

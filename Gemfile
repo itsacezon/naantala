@@ -5,6 +5,7 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "rack-attack"
 
+gem "activesupport"
 gem "activemodel-serializers-xml"
 gem "active_model_serializers"
 
@@ -15,6 +16,10 @@ gem "nokogiri"
 gem "twilio-ruby"
 
 group :development do
-  gem "dotenv"
   gem "thin"
+end
+
+group :test do
+  gem "rspec"
+  gem "rack-test"
 end

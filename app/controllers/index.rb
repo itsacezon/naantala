@@ -22,6 +22,8 @@ module Naantala
 
         if model.valid?
           model.save!
+        else
+          model.errors.full_messages
         end
 
         redirect "/"
