@@ -19,7 +19,6 @@ module Naantala
 
           status.save!
 
-          # NOTE: For now, limit this to 1000 on Twilio
           phone_numbers = Naantala::Models::PhoneNumbers.all.collect(&:number)
 
           notifier = Naantala::Service::Notifier.new(
