@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
-path = File.expand_path(File.join(File.dirname(__FILE__), "../app", "service"))
-$LOAD_PATH << path
+["/", "app/service"].each do |folder|
+  path = File.expand_path(File.join(File.dirname(__FILE__), "../", folder))
+  $LOAD_PATH << path
+end
+
+require "mongo_mapper"
 
 require "naantala_service"
-
-service = Naantala::Service::LineStatus.new
-service.check_status
+Naantala::Service::LineStatus.check_status
