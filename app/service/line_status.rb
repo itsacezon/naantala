@@ -20,7 +20,7 @@ module Naantala
 
           status.save!
 
-          phone_numbers = Naantala::Models::PhoneNumbers.all.collect(&:number)
+          phone_numbers = Naantala::Models::PhoneNumber.all.collect(&:number)
 
           notifier = Naantala::Service::Notifier.new(
             phone_numbers: phone_numbers,

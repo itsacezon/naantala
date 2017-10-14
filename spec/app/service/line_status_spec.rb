@@ -1,5 +1,5 @@
 require "spec_helper"
-require "app/service/line_status"
+require "app/service/runner"
 
 RSpec.describe Naantala::Service::LineStatus do
   def app

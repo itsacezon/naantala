@@ -4,6 +4,6 @@ $: << File.expand_path('../../', __FILE__)
 
 require "config/environment"
 require "active_model/serializers"
-require "app/service/main"
+require "app/service/runner"
 
 Naantala::Service::LineStatus.check_status
