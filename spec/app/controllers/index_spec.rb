@@ -1,5 +1,4 @@
 require "spec_helper"
-require "app/controllers"
 
 RSpec.describe Naantala::Controllers::Index do
   def app

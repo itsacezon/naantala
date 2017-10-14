@@ -1,5 +1,3 @@
-require "twilio-ruby"
-
 module Naantala
   module Service
     class Notifier

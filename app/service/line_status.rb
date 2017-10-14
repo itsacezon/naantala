@@ -7,6 +7,8 @@ module Naantala
         def check_status
           latest = parser.statuses.first
 
+          return unless latest
+
           status = Naantala::Models::Status.new(
             time: latest[:time],
             description: latest[:description],

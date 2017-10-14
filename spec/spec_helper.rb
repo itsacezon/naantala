@@ -6,6 +6,10 @@ require "config/environment"
 require "factory_girl"
 require "rack/test"
 
+require "app/controllers"
+require "app/models"
+require "app/service/runner"
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Rack::Test::Methods
@@ -27,13 +31,13 @@ RSpec.configure do |config|
 
   config.disable_monkey_patching!
 
-  config.warnings = true
+  config.warnings = false
 
   if config.files_to_run.one?
     config.default_formatter = "doc"
   end
 
-  config.profile_examples = 10
+  config.profile_examples = 2
 
   config.order = :random
 
