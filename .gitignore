@@ -1,3 +1,4 @@
 *.swp
 .env
-config/db.json
+.DS_Store
+log/*

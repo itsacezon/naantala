@@ -1,6 +1,6 @@
 $: << File.expand_path('../../', __FILE__)
 
-ENV["RACK_ENV"] == "test"
+ENV["RACK_ENV"] = "test"
 
 require "config/environment"
 require "factory_girl"

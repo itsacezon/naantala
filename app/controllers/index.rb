@@ -6,7 +6,7 @@ module Naantala
       end
 
       post "/phone/new" do
-        escaped = ERB::Util.html_escape(params[:number])
+        escaped = ERB::Util.html_escape(params[:number]).gsub(/\s+/, "")
 
         # Check format
         number =

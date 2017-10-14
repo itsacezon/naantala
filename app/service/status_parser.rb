@@ -12,10 +12,10 @@ module Naantala
 
       def statuses
         selector = ".service-status-page .news-main-item"
-
-        # NOTE: Data is already sorted from the page
-        # In case of change, apply necessary sort method
-        page.css(selector).flat_map { |section| parse_data(section) }
+        page.css(selector)
+          .flat_map { |section| parse_data(section) }
+          .sort_by { |status| status[:time] }
+          .reverse!
       end
 
       private
@@ -24,16 +24,12 @@ module Naantala
         Nokogiri::HTML(open(url))
       end
 
-      def time_in_manila(date)
-        DateTime.parse(date).new_offset("+0800")
-      end
-
       def parse_data(section)
         date = section.at(".news-main-title").text
         section.css("table tbody tr").map do |row|
           cells = row.css("td").map(&:text).map(&:strip)
           {
-            time: time_in_manila("#{date} #{cells[0]}"),
+            time: DateTime.parse("#{date} #{cells[0]} +0800"),
             description: cells[1],
             status: cells[2],
             station: cells[3],
