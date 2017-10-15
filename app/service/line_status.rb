@@ -1,42 +1,27 @@
-require "app/models"
-
 module Naantala
   module Service
     class LineStatus
       class << self
         def check_status
-          latest = parser.statuses.first
-
-          return unless latest
-
-          status = Naantala::Models::Status.new(
-            time: latest[:time],
-            description: latest[:description],
-            status: latest[:status],
-            station: latest[:station],
-            bound: latest[:bound]
-          )
-
           # TODO: Logging
-          return unless status.valid?
+          return unless latest_status
 
-          status.save!
-
-          phone_numbers = Naantala::Models::PhoneNumber.all.collect(&:number)
-
-          notifier = Naantala::Service::Notifier.new(
-            phone_numbers: phone_numbers,
-            status: status
-          )
-          notifier.send!
+          if latest_status.valid?
+            latest_status.save!
+            notify(latest_status)
+          end
         end
 
         private
 
-        def parser
-          @parser ||= Naantala::Service::StatusParser.new(
-            url: "https://dotcmrt3.gov.ph/service-status"
-          )
+        def latest_status
+          @latest_status ||= Naantala::Service::StatusParser
+            .statuses("https://dotcmrt3.gov.ph/service-status")
+            .first
+        end
+
+        def notify(status)
+          Naantala::Service::Notifier.notify_subscribers!(status)
         end
       end
     end

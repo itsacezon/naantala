@@ -7,30 +7,23 @@ RSpec.describe Naantala::Service::StatusParser do
 
   describe "#statuses" do
     context "correct url" do
-      let(:parser) { app.new(url: "https://dotcmrt3.gov.ph/service-status") }
+      let(:url) { "https://dotcmrt3.gov.ph/service-status" }
 
       it "parses data" do
-        statuses = parser.statuses
-        expect(statuses).not_to be_empty
+        expect(app.statuses(url)).not_to be_empty
       end
 
-      it "has correct keys for an element" do
-        status = parser.statuses.first
-
-        expect(status).to have_key(:time)
-        expect(status).to have_key(:description)
-        expect(status).to have_key(:status)
-        expect(status).to have_key(:station)
-        expect(status).to have_key(:bound)
+      it "returns Status objects" do
+        expect(app.statuses(url).first)
+          .to be_an_instance_of(Naantala::Models::Status)
       end
     end
 
     context "incorrect url" do
-      let(:parser) { app.new(url: "http://example.com") }
+      let(:url) { "http://example.com" }
 
       it "doesn't parse data" do
-        statuses = parser.statuses
-        expect(statuses).to be_empty
+        expect(app.statuses(url)).to be_empty
       end
     end
   end

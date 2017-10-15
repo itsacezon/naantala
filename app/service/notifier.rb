@@ -1,25 +1,25 @@
+require "app/models/phone_number"
+
 module Naantala
   module Service
     class Notifier
-      attr_accessor :phone_numbers, :status
+      class << self
+        def notify_subscribers!(status)
+          @phone_numbers = Naantala::Models::PhoneNumber.all
+          @status = status
 
-      def initialize(params = {})
-        @phone_numbers = params.fetch(:phone_numbers, [])
-        @status = params.fetch(:status)
-      end
+          puts "Sent!"
+        end
 
-      def send!
-        puts "Sent!"
-      end
+        private
 
-      private
+        def client
+          @client ||= Twilio::REST::Client.new()
+        end
 
-      def client
-        @client ||= Twilio::REST::Client.new()
-      end
+        def build_message
 
-      def build_message
-
+        end
       end
     end
   end
