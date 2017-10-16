@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala)
 
-NOTE: Putting this small project on hold. I'm trying to figure out which SMS API to use due to budget constraints. If you have ideas, feel free to ping me. 😇
+**NOTE**: Putting this small project on hold. I'm trying to figure out which SMS API to use due to budget constraints. If you have ideas, feel free to ping me. 😇
 
 -----
 
