@@ -1,4 +1,3 @@
-require "date"
 require "open-uri"
 require "app/models/status"
 
@@ -24,7 +23,7 @@ module Naantala
           section.css("table tbody tr").map do |row|
             cells = row.css("td").map(&:text).map(&:strip)
             {
-              time: DateTime.parse("#{date} #{cells[0]} +0800"),
+              time: Time.parse("#{date} #{cells[0]} +0800"),
               description: cells[1],
               status: cells[2],
               station: cells[3],

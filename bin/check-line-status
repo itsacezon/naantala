@@ -6,4 +6,5 @@ require "config/environment"
 require "active_model/serializers"
 require "app/service/runner"
 
+Time.zone = "Asia/Manila"
 Naantala::Service::LineStatus.check_status

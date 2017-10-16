@@ -10,6 +10,8 @@ require "app/controllers"
 require "app/models"
 require "app/service/runner"
 
+Time.zone = "Asia/Manila"
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Rack::Test::Methods
