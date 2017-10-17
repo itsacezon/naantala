@@ -7,9 +7,6 @@ module Naantala
         def notify_subscribers!(status)
           phone_numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
 
-          puts "Sent!"
-          return
-
           service_status = build_message(status)
           phone_numbers.collect(&:number).each do |number|
             client.account.messages.create(
