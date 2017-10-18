@@ -6,23 +6,22 @@ module Naantala
     class Notifier
       class << self
         def notify_subscribers!(status)
-          phone_numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
+          message = build_message(status)
+          numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
+            .collect(&:number).join(",").gsub("+63", "0")
 
-          service_status = build_message(status)
-          numbers_string = phone_numbers.join(",").gsub("+63", "0")
-
-          return # Don't send message for now
-          client.send_message(
-            message: service_status,
-            numbers: numbers_string
-          )
+          if client.send_message(message: message, numbers: numbers)
+            # TODO: Logging
+          end
         end
 
         def build_message(status)
           message = status.description
           downcased = message.downcase
 
-          # If description does not have station and time, include them
+          # If description does not have station and time, include them.
+          # Sometimes, the description won't match the attribute on the table
+          # e.g. time mismatch; in this case, the description will be followed
 
           station_tokens = status.station.downcase.gsub("-", "").split
           has_station = station_tokens.any? { |token| downcased.include? token }
@@ -30,8 +29,11 @@ module Naantala
             message = "#{message} Station: #{status.station}"
           end
 
-          time_string = status.time.strftime("%l:%M %p").strip
-          unless downcased.include? time_string.downcase
+          begin
+            # Test if the description contains a time
+            Time.parse(downcased)
+          rescue ArgumentError
+            time_string = status.time.strftime("%l:%M %p").strip
             message = "#{message}#{',' unless has_station} Time: #{time_string}"
           end
 

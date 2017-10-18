@@ -1,4 +1,5 @@
 require "spec_helper"
+require "lib/semaphore_api"
 
 RSpec.describe Naantala::Service::Notifier do
   def app
@@ -63,7 +64,7 @@ RSpec.describe Naantala::Service::Notifier do
           let(:status) { build(
             :status,
             time: time,
-            description: "Issue on station at #{time_string}"
+            description: "Issue on station at #{time_string.gsub(" ", "")}"
           ) }
         end
 

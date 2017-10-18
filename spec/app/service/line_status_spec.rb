@@ -7,6 +7,10 @@ RSpec.describe Naantala::Service::LineStatus do
 
   describe "#check_status" do
     shared_context "methods" do
+      let(:notifier) {
+        class_double(Naantala::Service::Notifier).as_stubbed_const
+      }
+
       before do
         allow(app).to receive_messages(latest_status: status)
       end
@@ -48,13 +52,14 @@ RSpec.describe Naantala::Service::LineStatus do
       end
 
       it "saves the status" do
+        allow(notifier).to receive(:notify_subscribers!)
         expect { app.check_status }.to change {
           Naantala::Models::Status.count
         }.by(1)
       end
 
       it "notifies all subscribers" do
-        expect(Naantala::Service::Notifier)
+        expect(notifier)
           .to receive(:notify_subscribers!)
           .with(status)
         app.check_status

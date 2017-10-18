@@ -2,5 +2,5 @@
 .env
 .DS_Store
 coverage/*
-log/*.log
+log/*
 spec/examples.txt
