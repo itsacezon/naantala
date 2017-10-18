@@ -13,7 +13,6 @@ gem "mongo_mapper"
 gem "bson_ext"
 
 gem "nokogiri"
-gem "twilio-ruby"
 
 group :development do
   gem "thin"

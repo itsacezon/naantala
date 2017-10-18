@@ -1,3 +1,4 @@
+require "lib/semaphore_api"
 require "app/models/phone_number"
 
 module Naantala
@@ -8,14 +9,11 @@ module Naantala
           phone_numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
 
           service_status = build_message(status)
-          phone_numbers.collect(&:number).each do |number|
-            client.account.messages.create(
-              from: ENV["TWILIO_NUMBER"],
-              to: number,
-              body: service_status
-            )
-            # TODO: Logging
-          end
+          numbers_string = phone_numbers.join(",").gsub("+63", "0")
+          client.send_message(
+            message: service_status,
+            numbers: numbers_string
+          )
         end
 
         def build_message(status)
@@ -35,16 +33,13 @@ module Naantala
             message = "#{message}#{',' unless has_station} Time: #{time_string}"
           end
 
-          "SERVICE STATUS: #{message}"
+          "MRT3 SERVICE STATUS: #{message}"
         end
 
         private
 
         def client
-          @client ||= Twilio::REST::Client.new(
-            ENV["TWILIO_ACCOUNT_SID"],
-            ENV["TWILIO_AUTH_TOKEN"]
-          )
+          @client ||= SemaphoreApi.new
         end
       end
     end
