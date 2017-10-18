@@ -12,6 +12,7 @@ gem "mongo_mapper"
 gem "bson_ext"
 
 gem "addressable"
+gem "http"
 gem "nokogiri"
 
 gem 'coveralls'
@@ -25,4 +26,5 @@ group :test do
   gem "faker"
   gem "rspec"
   gem "rack-test"
+  gem 'database_cleaner'
 end

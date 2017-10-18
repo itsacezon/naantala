@@ -7,6 +7,8 @@ class SemaphoreApi
   end
 
   def send_message(message: nil, numbers: nil)
+    return if message.nil? or numbers.nil?
+
     uri = Addressable::URI.new
 
     options = {

@@ -8,7 +8,7 @@ module Naantala
       key :confirmation_code, String
       key :confirmed, Boolean, default: false
 
-      validates_format_of :number, with: /\A\+63[0-9]{10}\z/
+      validates_format_of :number, with: /\A\+639[0-9]{9}\z/
       validates_presence_of :number
       validates_uniqueness_of :number, message: "has already been registered."
     end
