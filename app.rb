@@ -4,6 +4,7 @@ require "config/environment"
 require "config/initializers/rack-attack"
 
 require "sinatra/base"
+require "sinatra/namespace"
 require "sinatra/reloader"
 
 require "active_model/serializers"
@@ -23,10 +24,13 @@ module Naantala
       register Sinatra::Reloader
     end
 
+    register Sinatra::Namespace
+
     use Rack::Attack
     use Rack::Deflater
 
     use Naantala::Controllers::Index
+    use Naantala::Controllers::Phone
   end
 end
 

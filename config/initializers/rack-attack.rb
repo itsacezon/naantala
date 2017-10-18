@@ -10,6 +10,10 @@ class Rack::Attack
   end
 
   throttle("req/post", limit: 5, period: 30.seconds) do |req|
-    req.params["number"] if req.path == "/phone/new" && req.post?
+    if req.path == "/phone/new" && req.post?
+      req.params["number"]
+    elsif req.path == "/phone/confirm" && req.get?
+      req.params["code"]
+    end
   end
 end

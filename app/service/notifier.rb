@@ -10,8 +10,8 @@ module Naantala
           numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
             .collect(&:number).join(",").gsub("+63", "0")
 
+          # TODO: Logging
           if client.send_message(message: message, numbers: numbers)
-            # TODO: Logging
           end
         end
 
