@@ -1,6 +1,6 @@
 # naantala
 
-[![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala) [![Coverage Status](https://coveralls.io/repos/github/itsacezon/naantala/badge.svg?branch=master)](https://coveralls.io/github/itsacezon/naantala?branch=master)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/itsacezon/naantala) [![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala) [![Coverage Status](https://coveralls.io/repos/github/itsacezon/naantala/badge.svg?branch=master)](https://coveralls.io/github/itsacezon/naantala?branch=master)
 
 Delivers SMS notifications whenever MRT Line 3 experiences technical problems.
 This service works by pinging https://dotcmrt3.gov.ph/service-status for the most recent status. As a result, it's not real-time since it relies on the webpage being updated regularly.
