@@ -10,6 +10,8 @@ module Naantala
 
           service_status = build_message(status)
           numbers_string = phone_numbers.join(",").gsub("+63", "0")
+
+          return # Don't send message for now
           client.send_message(
             message: service_status,
             numbers: numbers_string

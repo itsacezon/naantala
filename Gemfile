@@ -12,6 +12,7 @@ gem "active_model_serializers"
 gem "mongo_mapper"
 gem "bson_ext"
 
+gem "addressable"
 gem "nokogiri"
 
 group :development do
