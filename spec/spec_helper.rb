@@ -10,6 +10,8 @@ require "app/controllers"
 require "app/models"
 require "app/service/runner"
 
+Coveralls.wear!
+
 Time.zone = "Asia/Manila"
 
 RSpec.configure do |config|
