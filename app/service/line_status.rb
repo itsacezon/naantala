@@ -3,8 +3,6 @@ module Naantala
     class LineStatus
       class << self
         def check_status
-          # TODO: Logging
-          return unless latest_status
 
           if latest_status.valid?
             latest_status.save!

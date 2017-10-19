@@ -3,7 +3,6 @@
 $: << File.expand_path('../../', __FILE__)
 
 require "config/environment"
-require "active_model/serializers"
 require "app/service/runner"
 
 Time.zone = "Asia/Manila"

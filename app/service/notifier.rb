@@ -6,12 +6,17 @@ module Naantala
     class Notifier
       class << self
         def notify_subscribers!(status)
-          message = build_message(status)
           numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
-            .collect(&:number).join(",").gsub("+63", "0")
 
-          # TODO: Logging
-          if client.send_message(message: message, numbers: numbers)
+          message = build_message(status)
+          numbers_string = numbers.collect(&:number).join(",").gsub("+63", "0")
+
+          NaantalaLogger.log.info "#{message}"
+
+          if client.send_message(message: message, numbers: numbers_string)
+            NaantalaLogger.log.info "NOTIFIER: Sent status to #{numbers.size} subscribers"
+          else
+            NaantalaLogger.log.info "NOTIFIER: Failed to send status. Check Semaphore logs."
           end
         end
 
@@ -37,7 +42,7 @@ module Naantala
             message = "#{message}#{',' unless has_station} Time: #{time_string}"
           end
 
-          "MRT3 SERVICE STATUS: #{message}"
+          "MRT-3 STATUS: #{message}"
         end
 
         private
