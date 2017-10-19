@@ -14,6 +14,7 @@ gem "bson_ext"
 gem "addressable"
 gem "http"
 gem "nokogiri"
+gem "sanitize"
 
 gem 'coveralls'
 

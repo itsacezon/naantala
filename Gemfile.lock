@@ -87,6 +87,8 @@ GEM
     mustermann (1.0.1)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    nokogumbo (1.4.13)
+      nokogiri
     plucky (0.7.0)
       mongo (~> 1.5)
     public_suffix (3.0.0)
@@ -115,6 +117,10 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
+    sanitize (4.5.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4.1)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -167,6 +173,7 @@ DEPENDENCIES
   rack-attack
   rack-test
   rspec
+  sanitize
   sinatra
   sinatra-contrib
   thin

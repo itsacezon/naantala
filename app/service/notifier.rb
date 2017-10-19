@@ -9,7 +9,7 @@ module Naantala
           numbers = Naantala::Models::PhoneNumber.all(confirmed: true)
 
           message = build_message(status)
-          numbers_string = numbers.collect(&:number).join(",").gsub("+63", "0")
+          numbers_string = numbers.collect(&:number).join(",")
 
           NaantalaLogger.log.info "#{message}"
 

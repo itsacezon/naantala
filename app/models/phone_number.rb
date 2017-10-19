@@ -5,7 +5,7 @@ module Naantala
       timestamps!
 
       key :number, String
-      key :confirmation_code, String
+      key :code, String
       key :confirmed, Boolean, default: false
 
       validates_format_of :number, with: /\A\+639[0-9]{9}\z/

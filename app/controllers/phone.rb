@@ -3,33 +3,38 @@ require "securerandom"
 module Naantala
   module Controllers
     class Phone < Base
-      def confirmation_message(code)
-        "Thanks for subscribing! To confirm, visit https://naantala.com/phone/confirm?code=#{code}"
+      def format_e164(number)
+        if number.starts_with?("09")
+          "+63#{number[1..-1]}"
+        elsif number.starts_with?("+63")
+          number
+        else
+          "+63#{number}"
+        end
+      end
+
+      def confirm_message(number, code)
+        "Thanks for subscribing! To confirm, visit"\
+        " https://naantala.com/phone/confirm?"\
+        "number=#{number}&code=#{code}"
       end
 
       namespace "/phone" do
         post "/new" do
-          escaped = ERB::Util.html_escape(params[:number])
+          escaped = Sanitize.fragment(params[:number])
             .gsub(/\s+/, "")
 
-          # Check format
-          number =
-            if escaped.starts_with?("09")
-              "+63#{escaped[1..-1]}"
-            elsif escaped.starts_with?("+63")
-              escaped
-            else
-              "+63#{escaped}"
-            end
+          number = format_e164(escaped)
+          code = SecureRandom.hex(4)
 
-          code = SecureRandom.base64(48)
           model = Models::PhoneNumber.new(
             number: number,
-            confirmation_code: code
+            code: code
           )
 
           if model.valid?
-            model.save!
+            puts confirm_message(number.gsub("+63", ""), code)
+            # model.save!
           else
             model.errors.full_messages
           end
