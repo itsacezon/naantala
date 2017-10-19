@@ -4,6 +4,7 @@ require "config/environment"
 require "config/initializers/rack-attack"
 
 require "sinatra/base"
+require "sinatra/flash"
 require "sinatra/namespace"
 require "sinatra/reloader"
 

@@ -13,11 +13,13 @@ module Naantala
 
           NaantalaLogger.log.info "#{message}"
 
-          if client.send_message(message: message, numbers: numbers_string)
-            NaantalaLogger.log.info "NOTIFIER: Sent status to #{numbers.size} subscribers"
-          else
-            NaantalaLogger.log.info "NOTIFIER: Failed to send status. Check Semaphore logs."
-          end
+          response = client.send_message(message: message, number: numbers_string)
+          return unless response
+
+          notifier_status = %w[sent failed queued pending refunded].map { |s|
+            "#{s.capitalize} - #{response[s].size}"
+          }
+          NaantalaLogger.log.info "NOTIFIER: #{notifier_status.join(', ')}"
         end
 
         def build_message(status)

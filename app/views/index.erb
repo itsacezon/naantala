@@ -1,14 +1,16 @@
 <section class="container">
-  <h1>Hello Views!</h1>
-  <% if session[:error] %>
+  <h1>Naantala</h1>
+
+  <% if flash[:error] %>
     <div>
       <p>
-        <strong>Oops!</strong> <%= session[:error] %>
+        <strong>Oops!</strong> <%= flash[:error] %>
       </p>
     </div>
   <% end %>
+
   <form method="POST" action="/phone/new">
     <input type="tel" name="number" placeholder="Enter your phone number" />
-    <button type="submit">Add phone number</button>
+    <button type="submit">Subscribe</button>
   </form>
 </section>

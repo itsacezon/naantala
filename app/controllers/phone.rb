@@ -36,9 +36,10 @@ module Naantala
             puts confirm_message(number.gsub("+63", ""), code)
             # model.save!
           else
-            session[:error] = model.errors.full_messages.join(",")
-            redirect "/"
+            flash[:error] = model.errors.full_messages.join(",")
           end
+
+          redirect "/"
         end
 
         get "/confirm" do

@@ -5,5 +5,7 @@ $: << File.expand_path('../../', __FILE__)
 require "config/environment"
 require "app/service/runner"
 
+ENV["RACK_ENV"] = "production"
+
 Time.zone = "Asia/Manila"
 Naantala::Service::LineStatus.check_status

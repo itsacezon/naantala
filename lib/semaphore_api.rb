@@ -6,8 +6,8 @@ class SemaphoreApi
     @sender_name = ENV["SEMAPHORE_SENDER_NAME"]
   end
 
-  def send_message(message: nil, numbers: nil)
-    return if message.nil? or numbers.nil?
+  def send_message(message: nil, number: nil)
+    return if message.nil? or number.nil?
 
     uri = Addressable::URI.new
 
@@ -22,6 +22,6 @@ class SemaphoreApi
     path = "http://api.semaphore.co/api/v4/messages?#{uri.query}"
     response = HTTP.post(path)
 
-    JSON.parse(response).all? { |r| r["status"] != "failed" }
+    JSON.parse(response).group_by { |r| r["status"].downcase }
   end
 end

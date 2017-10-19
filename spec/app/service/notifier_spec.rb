@@ -88,7 +88,7 @@ RSpec.describe Naantala::Service::Notifier do
     it "ignores unconfirmed numbers" do
       expect(client).to receive(:send_message).with(
         message: "Message",
-        numbers: confirmed_number.number
+        number: confirmed_number.number
       )
       app.notify_subscribers!(status)
     end
