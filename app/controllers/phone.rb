@@ -36,7 +36,7 @@ module Naantala
             puts confirm_message(number.gsub("+63", ""), code)
             # model.save!
           else
-            model.errors.full_messages
+            puts "#{model.errors.full_messages}"
           end
 
           redirect "/"
