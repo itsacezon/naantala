@@ -1,5 +1,6 @@
 <section class="container">
   <h1>Hello Views!</h1>
+  <pre>Environment: <%= ENV["RACK_ENV"] %></pre>
   <form method="POST" action="/phone/new">
     <input type="tel" name="number" placeholder="Enter your phone number" />
     <button type="submit">Add phone number</button>

@@ -17,9 +17,10 @@ test: &test
   database: naantalaTest
   host: localhost
 
+staging:
+  <<: *defaults
+  uri: <%= ENV["MONGODB_URI"] %>
+
 production:
   <<: *defaults
-  uri: <%= ENV["MONGOHQ_URL"] %>
-  database: <%= ENV["MONGO_DATABASE"] %>
-  username: <%= ENV["MONGO_USERNAME"] %>
-  password: <%= ENV["MONGO_PASSWORD"] %>
+  uri: <%= ENV["MONGODB_URI"] %>
