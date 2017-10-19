@@ -1,6 +1,6 @@
 # naantala
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/itsacezon/naantala) [![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala) [![Coverage Status](https://coveralls.io/repos/github/itsacezon/naantala/badge.svg?branch=master)](https://coveralls.io/github/itsacezon/naantala?branch=master)
+[![Version](https://img.shields.io/badge/version-0.1.2-blue.svg)](https://github.com/itsacezon/naantala) [![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala) [![Coverage Status](https://coveralls.io/repos/github/itsacezon/naantala/badge.svg?branch=master)](https://coveralls.io/github/itsacezon/naantala?branch=master)
 
 Delivers SMS notifications whenever MRT Line 3 experiences technical problems.
 This service works by pinging https://dotcmrt3.gov.ph/service-status for the most recent status. As a result, it's not real-time since it relies on the webpage being updated regularly.
@@ -25,5 +25,5 @@ Note that only issues with CAT3 & CAT4 statuses will be captured.
 
 ## Running the service
 The SMS notifier (located inside `app/service`) should be run via a scheduler (Heroku Scheduler, etc.)
-1. Set up your [Semaphore](https://semaphore.co) account to configure the environment variables (save them on an `.env` file).
+1. Set up your [Semaphore](https://semaphore.co) account to configure the environment variables.
 2. Add `./bin/check-line-status` to your scheduler and set it to run every 10-15 minutes (recommended).
