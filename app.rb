@@ -17,6 +17,7 @@ module Naantala
   class App < Sinatra::Application
     configure do
       disable :method_override
+      enable :sessions
       set :protection, escaped_params: true
     end
 

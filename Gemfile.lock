@@ -96,6 +96,8 @@ GEM
     rack (2.0.3)
     rack-attack (5.0.1)
       rack
+    rack-flash (0.1.2)
+      rack
     rack-protection (2.0.0)
       rack
     rack-test (0.7.0)
@@ -173,6 +175,7 @@ DEPENDENCIES
   nokogiri
   puma
   rack-attack
+  rack-flash
   rack-test
   rspec
   sanitize

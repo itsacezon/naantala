@@ -4,6 +4,7 @@ ruby File.read(File.join File.dirname(__FILE__), '.ruby-version').strip
 gem "sinatra"
 gem "sinatra-contrib"
 gem "rack-attack"
+gem "rack-flash"
 
 gem "activesupport"
 gem "activemodel-serializers-xml"
