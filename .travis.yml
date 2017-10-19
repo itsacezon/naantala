@@ -1,14 +1,19 @@
 language: ruby
 rvm:
-  - 2.4.2
+- 2.4.2
 env:
-  - RACK_ENV=test
-bundler_args: --jobs=2
+- RACK_ENV=test
+bundler_args: "--jobs=2"
 script:
-script:
-  - bundle exec rspec
+- bundle exec rspec
 cache: bundler
 services:
-  - mongodb
+- mongodb
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: NJm4eMNYpAZ+oeZ7LfTgxACGD9xJWPCR12zqHQYrOgOF3xpIm5sCfKQ4+jJpRziRFe0ZCz8sIq3iJXX5yeTc1Gz5VUo9E5PztpTShx1+lx3gYw7aI7WfM8/+NzrbtA1v2OmCt71WMbhIMAFBXlsJGqihG7bl+Ttsc3BzNTuxblOtyNtU90s87ibBgk7dNPv4S12qJUSfOq36Vl7ErULF/i9fGWZ7ZzdCB6qTYcdUl//B6D6s4l77YJBQbdHDrf6rss9X8PGiX0mxJa6VQ4BRUqM5Mj7q6qIrAHmmQcApsuLmovBsnjOlO3scEE7xgC62W874DlmBzkUqKKdwJ3rteGZRl5uvs/sOjEb+21mwLvfe8SY4kPY00b7OTQUSXuNhW6nmQOnBSrZQYZhmvYMWNgLgheplayV+IydmvYsivkG6kZn8gKgOioVSwhVPMLtrbkzx99hQVNc/P+yhMCDkZN4NHugKQQ5tUqRQRaHqY0/Cl6LX3kvhMDQfQDgDtsdvUbr8zCMV7/QzrHpBy3gEJYU4JJ/6OByIelGZHQdACO69UqkiGiotsYk+p7/+pSuO36rUiPOAnXmUf3hcn7O/aS3VoEIgpIGK0UTWFsBMvlzmwk6ZipaVioic/N2LR6p4/HxSTjk7Ae6WN+g/YEk8B5ut6NPWO2tDHuEHnrhSWQw=
+  app:
+    master: naantala-staging
