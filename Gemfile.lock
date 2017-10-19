@@ -92,6 +92,7 @@ GEM
     plucky (0.7.0)
       mongo (~> 1.5)
     public_suffix (3.0.0)
+    puma (3.10.0)
     rack (2.0.3)
     rack-attack (5.0.1)
       rack
@@ -170,6 +171,7 @@ DEPENDENCIES
   http
   mongo_mapper
   nokogiri
+  puma
   rack-attack
   rack-test
   rspec

@@ -29,3 +29,7 @@ group :test do
   gem "rack-test"
   gem 'database_cleaner'
 end
+
+group :staging do
+  gem "puma"
+end
