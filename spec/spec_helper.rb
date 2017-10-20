@@ -3,10 +3,13 @@ $: << File.expand_path('../../', __FILE__)
 ENV["RACK_ENV"] = "test"
 
 require "config/environment"
+require "config/initializers/rack-attack"
+
 require "database_cleaner"
 require "factory_girl"
 require "rack/test"
 
+require "app"
 require "app/controllers"
 require "app/models"
 require "app/service/runner"

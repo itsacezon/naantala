@@ -9,7 +9,15 @@ class Rack::Attack
     req.ip
   end
 
-  throttle("req/post", limit: 5, period: 30.seconds) do |req|
+  throttle("post/ip", limit: 5, period: 30.seconds) do |req|
+    if req.path == "/phone/new" && req.post?
+      req.ip
+    elsif req.path == "/phone/confirm" && req.get?
+      req.ip
+    end
+  end
+
+  throttle("post/phone", limit: 5, period: 30.seconds) do |req|
     if req.path == "/phone/new" && req.post?
       req.params["number"]
     elsif req.path == "/phone/confirm" && req.get?

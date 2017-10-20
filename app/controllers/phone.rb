@@ -33,7 +33,7 @@ module Naantala
           )
 
           if model.valid?
-            puts confirm_message(number.gsub("+63", ""), code)
+            # puts confirm_message(number.gsub("+63", ""), code)
             # model.save!
           else
             flash[:error] = model.errors.full_messages.join(",")
