@@ -7,6 +7,12 @@ module Naantala
 
         set :erb, format: :html5
       end
+
+      helpers do
+        def has_reached_limit
+          Models::PhoneNumber.all(confirmed: true).count >= 100
+        end
+      end
     end
   end
 end

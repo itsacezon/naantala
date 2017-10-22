@@ -13,7 +13,7 @@ module Naantala
 
           NaantalaLogger.log.info "#{message}"
 
-          response = client.send_message(message: message, number: numbers_string)
+          response = SemaphoreApi.send_message(message: message, number: numbers_string)
           return unless response
 
           notifier_status = %w[sent failed queued pending refunded].map { |s|
@@ -45,12 +45,6 @@ module Naantala
           end
 
           "MRT-3 STATUS: #{message}"
-        end
-
-        private
-
-        def client
-          @client ||= SemaphoreApi.new
         end
       end
     end

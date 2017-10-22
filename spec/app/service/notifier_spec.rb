@@ -76,16 +76,16 @@ RSpec.describe Naantala::Service::Notifier do
   end
 
   describe "#notify_subscribers!" do
-    let(:client) { instance_double(SemaphoreApi) }
     let(:unconfirmed_number) { create(:phone_number, confirmed: false) }
     let(:confirmed_number) { create(:phone_number) }
     let(:status) { build(:status) }
 
     before do
-      allow(app).to receive_messages(build_message: "Message", client: client)
+      allow(app).to receive_messages(build_message: "Message")
     end
 
     it "ignores unconfirmed numbers" do
+      client = class_double(SemaphoreApi).as_stubbed_const
       expect(client).to receive(:send_message).with(
         message: "Message",
         number: confirmed_number.number

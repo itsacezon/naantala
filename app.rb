@@ -19,7 +19,9 @@ module Naantala
     configure do
       disable :method_override
       enable :sessions
+
       set :protection, escaped_params: true
+      set :views, "app/views"
     end
 
     configure :development do
@@ -33,6 +35,10 @@ module Naantala
 
     use Naantala::Controllers::Index
     use Naantala::Controllers::Phone
+
+    not_found do
+      erb :four_oh_four
+    end
   end
 end
 
