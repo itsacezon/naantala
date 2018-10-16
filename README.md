@@ -1,5 +1,8 @@
 # naantala
 
+### Project no longer maintained.
+The status page of MRT3 hasn't been active since May 2017.
+
 [![Version](https://img.shields.io/badge/version-0.1.2-blue.svg)](https://github.com/itsacezon/naantala) [![Build Status](https://travis-ci.org/itsacezon/naantala.svg?branch=master)](https://travis-ci.org/itsacezon/naantala) [![Coverage Status](https://coveralls.io/repos/github/itsacezon/naantala/badge.svg?branch=master)](https://coveralls.io/github/itsacezon/naantala?branch=master)
 
 Delivers SMS notifications whenever MRT Line 3 experiences technical problems.
